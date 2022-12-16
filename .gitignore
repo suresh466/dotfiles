@@ -6,3 +6,6 @@ qutebrowser/.config/qutebrowser/bookmarks
 qutebrowser/.config/qutebrowser/quickmarks
 qutebrowser/.config/qutebrowser/dracula
 qutebrowser/.config/qutebrowser/autoconfig.yml
+
+#nvim
+plugin
