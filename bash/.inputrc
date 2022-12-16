@@ -1,0 +1,2 @@
+# vi mode for tools that use GNU Readline(bash, mysql commandline)
+set editing-mode vi
