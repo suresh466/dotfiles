@@ -1,6 +1,12 @@
 return require('packer').startup(function(use)
     use('wbthomason/packer.nvim')
 
+    use({
+        'folke/which-key.nvim',
+        config = function()
+            require('which-key').setup({})
+        end,
+    })
     use('ellisonleao/gruvbox.nvim')
     use('nvim-tree/nvim-tree.lua')
     use('nvim-lualine/lualine.nvim')
@@ -45,4 +51,21 @@ return require('packer').startup(function(use)
 
     use('jose-elias-alvarez/null-ls.nvim') -- provides lsp hooks
     use('folke/neodev.nvim') -- for sumneko_lua lsp server config
+
+    -- Debugging plugs
+    use({
+        'mfussenegger/nvim-dap',
+        requires = {
+            'rcarriga/nvim-dap-ui', --ui for dap
+            'theHamsta/nvim-dap-virtual-text', --virtual text support
+            'mfussenegger/nvim-dap-python', --python-extension for DAP conf
+        },
+    })
+    -- Test framework
+    use({
+        'nvim-neotest/neotest',
+        requires = {
+            'nvim-neotest/neotest-python',
+        },
+    })
 end)

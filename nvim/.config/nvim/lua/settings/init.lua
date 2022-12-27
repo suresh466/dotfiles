@@ -16,5 +16,5 @@ set.history = 9999
 set.wildmode = 'longest:list'
 
 -- mouse support only in insert mode
-set.mouse = 'i'
+--set.mouse = 'i'
 -- set.wrap = false
