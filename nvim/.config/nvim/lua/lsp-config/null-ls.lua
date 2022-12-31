@@ -4,7 +4,7 @@ local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 
 local sources = {
-    formatting.eslint,
+    diagnostics.flake8,
     formatting.stylua.with({
         extra_args = {
             '--quote-style',
@@ -13,7 +13,6 @@ local sources = {
             'Spaces',
         },
     }),
-    diagnostics.flake8,
 }
 
 local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
@@ -27,8 +26,6 @@ null_ls.setup({
                 group = augroup,
                 buffer = bufnr,
                 callback = function()
-                    -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-                    --vim.lsp.buf.formatting_sync()
                     vim.lsp.buf.format({ bufnr = bufnr })
                 end,
             })
