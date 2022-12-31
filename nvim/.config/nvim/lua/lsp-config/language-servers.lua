@@ -1,9 +1,20 @@
--- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+
+local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
+for type, icon in pairs(signs) do
+    local hl = 'DiagnosticSign' .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
 
 vim.diagnostic.config({
     virtual_text = false,
+    float = {
+        source = 'if_many',
+        border = 'rounded',
+    },
 })
+
+--mappings
 local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
@@ -22,7 +33,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', '<space>gi', vim.lsp.buf.implementation, bufopts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
     vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
     vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
@@ -48,17 +59,12 @@ require('neodev').setup({
     -- add any options here, or leave empty to use the default settings
 })
 
--- then setup your lsp server as usual
---local lspconfig = require('lspconfig')
-
 -- example to setup sumneko and enable call snippets
-require('lspconfig')['sumneko_lua'].setup({
-    --lspconfig.sumneko_lua.setup({
+require('lspconfig').sumneko_lua.setup({
     settings = {
         Lua = {
             completion = {
                 callSnippet = 'Replace',
-                --displayContext = 1,
             },
             telemetry = {
                 enable = false,
@@ -66,23 +72,8 @@ require('lspconfig')['sumneko_lua'].setup({
         },
     },
 })
---})
 
 require('lspconfig')['pyright'].setup({
     on_attach = on_attach,
     flags = lsp_flags,
-})
-
-require('lspconfig')['tsserver'].setup({
-    on_attach = on_attach,
-    flags = lsp_flags,
-})
-
-require('lspconfig')['rust_analyzer'].setup({
-    on_attach = on_attach,
-    flags = lsp_flags,
-    -- Server-specific settings...
-    settings = {
-        ['rust-analyzer'] = {},
-    },
 })
