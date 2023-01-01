@@ -15,6 +15,9 @@ set.scrolloff = 8
 set.history = 9999
 set.wildmode = 'longest:list'
 
+set.ignorecase = true
+set.smartcase = true
+
 -- mouse support only in insert mode
 --set.mouse = 'i'
 -- set.wrap = false
