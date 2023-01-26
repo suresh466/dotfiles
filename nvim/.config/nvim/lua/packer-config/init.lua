@@ -45,12 +45,16 @@ return require('packer').startup(function(use)
 
     use('hrsh7th/nvim-cmp') -- Autocompletion plugin
     use('hrsh7th/cmp-nvim-lsp') -- LSP source for nvim-cmp
+    use('hrsh7th/cmp-buffer') -- LSP source for nvim-cmp
+    use('hrsh7th/cmp-path') -- LSP source for nvim-cmp
+    use('hrsh7th/cmp-cmdline') -- LSP source for nvim-cmp
 
     use('L3MON4D3/LuaSnip') -- Snippets plugin
     use('saadparwaiz1/cmp_luasnip') -- Snippets source for nvim-cmp
 
     use('jose-elias-alvarez/null-ls.nvim') -- provides lsp hooks
     use('folke/neodev.nvim') -- for sumneko_lua lsp server config
+    use('onsails/lspkind.nvim') -- for vs-code like pictograms in builtin nvim lsp
 
     -- Debugging plugs
     use({
@@ -67,5 +71,12 @@ return require('packer').startup(function(use)
         requires = {
             'nvim-neotest/neotest-python',
         },
+    })
+    -- commentary
+    use({
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup({})
+        end,
     })
 end)
