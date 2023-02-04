@@ -10,7 +10,7 @@ set.shiftwidth = 4
 set.number = true
 set.relativenumber = true
 
-set.scrolloff = 8
+set.scrolloff = 5
 
 set.history = 9999
 set.wildmode = 'longest:list'

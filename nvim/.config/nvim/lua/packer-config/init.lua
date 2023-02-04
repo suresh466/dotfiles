@@ -51,6 +51,7 @@ return require('packer').startup(function(use)
 
     use('L3MON4D3/LuaSnip') -- Snippets plugin
     use('saadparwaiz1/cmp_luasnip') -- Snippets source for nvim-cmp
+    use('rafamadriz/friendly-snippets')
 
     use('jose-elias-alvarez/null-ls.nvim') -- provides lsp hooks
     use('folke/neodev.nvim') -- for sumneko_lua lsp server config
