@@ -54,7 +54,7 @@ return require('packer').startup(function(use)
     use('rafamadriz/friendly-snippets')
 
     use('jose-elias-alvarez/null-ls.nvim') -- provides lsp hooks
-    use('folke/neodev.nvim') -- for sumneko_lua lsp server config
+    use('folke/neodev.nvim') -- for lua_ls lsp server config
     use('onsails/lspkind.nvim') -- for vs-code like pictograms in builtin nvim lsp
 
     -- Debugging plugs

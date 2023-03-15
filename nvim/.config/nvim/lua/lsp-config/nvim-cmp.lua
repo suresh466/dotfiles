@@ -6,7 +6,7 @@ local lspconfig = require('lspconfig')
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 local servers = {
     'pyright',
-    'sumneko_lua',
+    'lua_ls',
 }
 
 for _, lsp in ipairs(servers) do

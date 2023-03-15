@@ -60,7 +60,7 @@ require('neodev').setup({
 })
 
 -- example to setup sumneko and enable call snippets
-require('lspconfig').sumneko_lua.setup({
+require('lspconfig').lua_ls.setup({
     settings = {
         Lua = {
             completion = {
