@@ -77,3 +77,8 @@ require('lspconfig')['pyright'].setup({
     on_attach = on_attach,
     flags = lsp_flags,
 })
+-- TypeScript
+require('lspconfig').tsserver.setup({
+    on_attach = on_attach,
+    filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx' },
+})

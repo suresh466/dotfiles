@@ -1,18 +1,14 @@
 require('nvim-treesitter.configs').setup({
-    ensure_installed = { 'c', 'lua', 'rust', 'python', 'javascript' },
-
+    ensure_installed = { 'c', 'lua', 'rust', 'python', 'javascript', 'typescript' },
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
-
     -- Automatically install missing parsers when entering buffer
     -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
     auto_install = true,
-
     highlight = {
         -- `false` will disable the whole extension
         enable = true,
     },
-
     refactor = {
         highlight_definitions = {
             enable = true,
@@ -36,9 +32,7 @@ require('nvim-treesitter.configs').setup({
             },
         },
     },
-
     require('treesitter-context').setup(),
-
     rainbow = {
         enable = true,
         extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean

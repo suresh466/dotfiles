@@ -7,6 +7,7 @@ local lspconfig = require('lspconfig')
 local servers = {
     'pyright',
     'lua_ls',
+    'tsserver',
 }
 
 for _, lsp in ipairs(servers) do
@@ -37,7 +38,6 @@ cmp.setup({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
         }),
-
         --['<Tab>'] = cmp.mapping(function(fallback)
         --    if cmp.visible() then
         --        cmp.select_next_item()
