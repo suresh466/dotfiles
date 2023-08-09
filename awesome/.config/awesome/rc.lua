@@ -74,8 +74,8 @@ modkey = 'Mod4'
 awful.layout.layouts = {
     awful.layout.suit.spiral,
     awful.layout.suit.max,
+    awful.layout.suit.floating,
     --awful.layout.suit.max.fullscreen,
-    --awful.layout.suit.floating,
     --awful.layout.suit.tile,
     --awful.layout.suit.tile.left,
     --awful.layout.suit.tile.bottom,
@@ -267,7 +267,8 @@ awful.screen.connect_for_each_screen(function(s)
     -- Add widgets to the wibox
     s.mywibox:setup({
         layout = wibox.layout.align.horizontal,
-        { -- Left widgets
+        {
+            -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             s.mylayoutbox,
             -- mylauncher,
@@ -275,7 +276,8 @@ awful.screen.connect_for_each_screen(function(s)
             --s.mypromptbox,
         },
         s.mytasklist, -- Middle widget
-        { -- Right widgets
+        {
+            -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             --mykeyboardlayout,
             wibox.widget.systray(),
@@ -350,7 +352,6 @@ globalkeys = gears.table.join(
     end, { description = 'open a terminal', group = 'launcher' }),
     awful.key({ modkey, 'Control' }, 'r', awesome.restart, { description = 'reload awesome', group = 'awesome' }),
     awful.key({ modkey, 'Shift' }, 'q', awesome.quit, { description = 'quit awesome', group = 'awesome' }),
-
     awful.key({ modkey }, 'l', function()
         awful.tag.incmwfact(0.05)
     end, { description = 'increase master width factor', group = 'layout' }),
@@ -545,7 +546,6 @@ awful.rules.rules = {
                 'veromix',
                 'xtightvncviewer',
             },
-
             -- Note that the name property shown in xprop might be set slightly after creation of the client
             -- and the name shown there might not match defined rules here.
             name = {
@@ -599,20 +599,24 @@ client.connect_signal('request::titlebars', function(c)
     )
 
     awful.titlebar(c):setup({
-        { -- Left
+        {
+            -- Left
             awful.titlebar.widget.iconwidget(c),
             buttons = buttons,
             layout = wibox.layout.fixed.horizontal,
         },
-        { -- Middle
-            { -- Title
+        {
+            -- Middle
+            {
+                -- Title
                 align = 'center',
                 widget = awful.titlebar.widget.titlewidget(c),
             },
             buttons = buttons,
             layout = wibox.layout.flex.horizontal,
         },
-        { -- Right
+        {
+            -- Right
             awful.titlebar.widget.floatingbutton(c),
             awful.titlebar.widget.maximizedbutton(c),
             awful.titlebar.widget.stickybutton(c),
