@@ -10,3 +10,6 @@ qutebrowser/.config/qutebrowser/qsettings
 
 #nvim
 plugin
+
+#awesomeWM
+awesome-wm-widgets
