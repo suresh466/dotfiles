@@ -25,7 +25,8 @@ env:
   #For different font size in different monitor issue
   #
   ##WINIT_X11_SCALE_FACTOR: "1.2333333333333333"
-  WINIT_X11_SCALE_FACTOR: ".99"
+  #WINIT_X11_SCALE_FACTOR: ".99"
+  WINIT_X11_SCALE_FACTOR: "1.1"
 
 #window:
   # Window dimensions (changes require restart)

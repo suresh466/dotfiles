@@ -15,7 +15,7 @@ theme.main_color = "#ffff69"
 theme.main_color_bar = '#fdfd96'
 theme.accent_bar = '#800000'
 
-theme.font          = "Hack Nerd Font 8"
+theme.font          = "Hack Nerd Font 9"
 
 theme.bg_normal     = "#222222"
 theme.bg_focus      = "#535d6c"

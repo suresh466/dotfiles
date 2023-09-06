@@ -31,9 +31,11 @@ c.url.searchengines['dictcc'] = 'https://www.dict.cc/?s={}'
 
 c.aliases['ytdl'] = """spawn -v -m bash -c 'cd ~/vid/yt && youtube-dl "$@"' _ {url}"""
 
-# c.fonts.tabs = '8pt monospace'
-# c.fonts.statusbar = '8pt monospace'
-#c.fonts.web.family.fantasy = 'Arial'
+c.fonts.default_family = 'Hack Nerd Font'
+c.fonts.default_size = '10pt'
+
+c.fonts.web.size.default = 18 #16
+c.fonts.web.size.default_fixed = 15 #13
 
 c.search.incremental = True
 c.editor.command = ['code', '-nw', '{}']
