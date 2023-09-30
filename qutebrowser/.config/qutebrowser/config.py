@@ -28,6 +28,7 @@ c.url.searchengines['http'] = 'https://httpstatuses.com/{}'
 c.url.searchengines['duden'] = 'https://www.duden.de/suchen/dudenonline/{}'
 c.url.searchengines['dictcc'] = 'https://www.dict.cc/?s={}'
 #c.url.searchengines['maps'] = 'https://www.google.com/maps?q=%s'
+c.url.searchengines['y'] = 'https://www.youtube.com/results?search_query={}'
 
 c.aliases['ytdl'] = """spawn -v -m bash -c 'cd ~/vid/yt && youtube-dl "$@"' _ {url}"""
 
