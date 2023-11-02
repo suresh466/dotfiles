@@ -116,8 +116,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-# rust cargo related
-. "$HOME/.cargo/env"
 
 # Env variables:
 export  VISUAL=nvim
