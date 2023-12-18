@@ -1,5 +1,5 @@
 require('nvim-treesitter.configs').setup({
-    ensure_installed = { 'c', 'lua', 'rust', 'python', 'javascript', 'typescript' },
+    ensure_installed = { 'c', 'lua', 'python', 'javascript', 'typescript' },
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
     -- Automatically install missing parsers when entering buffer
@@ -33,9 +33,4 @@ require('nvim-treesitter.configs').setup({
         },
     },
     require('treesitter-context').setup(),
-    rainbow = {
-        enable = true,
-        extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-        max_file_lines = nil, -- Do not enable for files with more than n lines, int
-    },
 })
