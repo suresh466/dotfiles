@@ -1,12 +1,25 @@
 -- Setup language servers.
 local lspconfig = require('lspconfig')
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-lspconfig.pyright.setup {}
-lspconfig.tsserver.setup {}
 -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
 require('neodev').setup({
     -- add any options here, or leave empty to use the default settings
 })
+
+local servers = {
+    'pyright',
+    'lua_ls',
+    'tsserver',
+}
+
+for _, lsp in ipairs(servers) do
+    lspconfig[lsp].setup({
+        capabilities = capabilities,
+    })
+end
+
 -- example to setup sumneko and enable call snippets
 lspconfig.lua_ls.setup({
     -- Server-specific settings. See `:help lspconfig-setup`

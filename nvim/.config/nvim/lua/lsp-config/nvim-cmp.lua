@@ -1,22 +1,3 @@
--- Add additional capabilities supported by nvim-cmp
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-local lspconfig = require('lspconfig')
-
--- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = {
-    'pyright',
-    'lua_ls',
-    'tsserver',
-}
-
-for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup({
-        -- on_attach = my_custom_on_attach,
-        capabilities = capabilities,
-    })
-end
-
 -- luasnip setup
 local luasnip = require('luasnip')
 
@@ -38,35 +19,17 @@ cmp.setup({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
         }),
-        --['<Tab>'] = cmp.mapping(function(fallback)
-        --    if cmp.visible() then
-        --        cmp.select_next_item()
-        --    elseif luasnip.expand_or_jumpable() then
-        --        luasnip.expand_or_jump()
-        --    else
-        --        fallback()
-        --    end
-        --end, { 'i', 's' }),
-        --['<S-Tab>'] = cmp.mapping(function(fallback)
-        --    if cmp.visible() then
-        --        cmp.select_prev_item()
-        --    elseif luasnip.jumpable(-1) then
-        --        luasnip.jump(-1)
-        --    else
-        --        fallback()
-        --    end
-        --end, { 'i', 's' }),
     }),
     sources = {
         { name = 'nvim_lsp' },
         { name = 'path' },
         { name = 'luasnip' },
-        { name = 'buffer', keyword_length = 4 },
+        { name = 'buffer',  keyword_length = 4 },
     },
     formatting = {
         format = lspkind.cmp_format({
             mode = 'symbol_text', -- show only symbol annotations
-            maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+            maxwidth = 50,        -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
             -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
             ellipsis_char = '...',
             menu = {
