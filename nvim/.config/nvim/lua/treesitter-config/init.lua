@@ -1,4 +1,4 @@
-require('nvim-treesitter.configs').setup({
+require'nvim-treesitter.configs'.setup {
     ensure_installed = { 'c', 'lua', 'python', 'javascript', 'typescript' },
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
@@ -9,7 +9,7 @@ require('nvim-treesitter.configs').setup({
         -- `false` will disable the whole extension
         enable = true,
     },
-{
+    refactor = {
         highlight_definitions = {
             enable = true,
             -- Set to false if you have an `updatetime` of ~100.
@@ -17,13 +17,48 @@ require('nvim-treesitter.configs').setup({
         },
         smart_rename = {
             enable = true,
+            -- Assign keymaps to false to disable them, e.g. `smart_rename = false`.
             keymaps = {
-                smart_rename = 'grr',
+                smart_rename = "grr",
+            },
+        },
+        navigation = {
+            enable = true,
+            -- Assign keymaps to false to disable them, e.g. `goto_definition = false`.
+            keymaps = {
+                goto_definition = "gnd",
+                list_definitions = "gnD",
+                list_definitions_toc = "gO",
+                goto_next_usage = "<a-*>",
+                goto_previous_usage = "<a-#>",
             },
         },
     },
-    require('treesitter-context').setup(
-    {
-        mode='cursor', max_lines=3,
-    }),
+    --for the sake of not getting false error
+    ignore_install = {},
+    modules = {},
+
+}
+
+require('treesitter-context').setup(
+{
+    mode='cursor', max_lines=3,
 })
+
+-- Register Treesitter keybindings with which-key
+local wk = require("which-key")
+wk.register({
+    t = {
+        n = {
+            name = "Treesitter Navigation",
+            d = { "Go to Definition" },
+            D = { "List Definitions" },
+            O = { "List Definitions (TOC)" },
+            ["<a-*>"] = { "Go to Next Usage" },
+            ["<a-#>"] = { "Go to Previous Usage" },
+        },
+        r = {
+            r = { "Smart Rename" },
+        },
+    },
+}, { mode = "n" })
