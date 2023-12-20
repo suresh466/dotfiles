@@ -7,6 +7,8 @@ require('colorschemes-config.gruvbox')
 require('nvim-tree-config')
 require('lualine-config')
 
+require('mason-config.mason')
+
 require('treesitter-config')
 
 require('lsp-config.language-servers')
@@ -17,3 +19,4 @@ require('luasnip-config')
 
 require('dap-config')
 --require('neotest-config')
+
