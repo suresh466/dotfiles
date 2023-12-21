@@ -97,6 +97,9 @@ require('lazy').setup({
     },
 
     --linting
-    'mfussenegger/nvim-lint'
+    'mfussenegger/nvim-lint',
+
+    --formatting
+    'stevearc/conform.nvim',
 
 })
