@@ -19,4 +19,4 @@ require('luasnip-config')
 
 require('dap-config')
 --require('neotest-config')
-
+require('lint-config')

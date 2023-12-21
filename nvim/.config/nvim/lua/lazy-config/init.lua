@@ -95,4 +95,8 @@ require('lazy').setup({
             require('Comment').setup({})
         end,
     },
+
+    --linting
+    'mfussenegger/nvim-lint'
+
 })
