@@ -5,7 +5,7 @@ vim.g.mapleader = ' '
 
 -- misc
 map('n', '<leader>w', ':w<CR>', opts)
-map('n', '<leader>f', ':NvimTreeToggle<CR>', opts)
+map('n', '<leader>ee', ':NvimTreeToggle<CR>', opts)
 
 -- telescope
 map('n', '<leader>tf', ':Telescope find_files<CR>', opts)
@@ -20,8 +20,8 @@ keymap('n', '<C-d>', '<C-d>zz')
 keymap('n', '<C-u>', '<C-u>zz')
 
 --centered search
-keymap('n', 'n', 'nzzzv')
-keymap('n', 'N', 'Nzzzv')
+--keymap('n', 'n', 'nzzzv')
+--keymap('n', 'N', 'Nzzzv')
 
 -- yank put to primary register
 keymap({ 'n', 'v' }, '<leader>y', '"*y')
