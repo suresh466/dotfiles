@@ -1,19 +1,5 @@
 local Util = require("lazyvim.util")
-
--- for using folke lazy-vim keymaps as is
-local function map(mode, lhs, rhs, opts)
-	opts = opts or {}
-	local modes = type(mode) == "string" and { mode } or mode
-
-	-- Set default options
-	opts.silent = opts.silent ~= false
-	opts.noremap = opts.noremap ~= false
-
-	-- Set the keymap for each mode
-	for _, m in ipairs(modes) do
-		vim.keymap.set(m, lhs, rhs, opts)
-	end
-end
+local map = Util.silent_keymap_set
 
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
