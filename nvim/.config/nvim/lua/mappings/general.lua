@@ -108,6 +108,7 @@ end, { desc = "Lazygit (cwd)" })
 
 -- quit
 map("n", "<leader>qq", "<cmd>q<cr>", { desc = "Quit" })
+map("n", "<C-q>", "<cmd>q<cr>", { desc = "Quit" })
 
 -- highlights under cursor -- i don't know what good is this one for [TODO]
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })

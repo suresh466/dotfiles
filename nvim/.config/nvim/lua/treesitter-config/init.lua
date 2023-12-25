@@ -19,7 +19,8 @@ require("nvim-treesitter.configs").setup({
 			enable = true,
 			-- Assign keymaps to false to disable them, e.g. `smart_rename = false`.
 			keymaps = {
-				smart_rename = "grr",
+				smart_rename = false,
+				--smart_rename = "grr",
 			},
 		},
 		navigation = {

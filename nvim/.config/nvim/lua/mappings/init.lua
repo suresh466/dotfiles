@@ -1,31 +1,27 @@
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
-vim.g.mapleader = ' '
-
--- misc
-map('n', '<leader>w', ':w<CR>', opts)
-map('n', '<leader>ee', ':NvimTreeToggle<CR>', opts)
+vim.g.mapleader = " "
 
 -- telescope
-map('n', '<leader>tf', ':Telescope find_files<CR>', opts)
-map('n', '<leader>tg', ':Telescope live_grep<CR>', opts)
+map("n", "<leader>tf", ":Telescope find_files<CR>", opts)
+map("n", "<leader>tg", ":Telescope live_grep<CR>", opts)
 
 local keymap = vim.keymap.set
 
 -- remaps
 
 --centered half page up down
-keymap('n', '<C-d>', '<C-d>zz')
-keymap('n', '<C-u>', '<C-u>zz')
+keymap("n", "<C-d>", "<C-d>zz")
+keymap("n", "<C-u>", "<C-u>zz")
 
 --centered search
 --keymap('n', 'n', 'nzzzv')
 --keymap('n', 'N', 'Nzzzv')
 
 -- yank put to primary register
-keymap({ 'n', 'v' }, '<leader>y', '"*y')
-keymap('n', '<leader>Y', '"*Y')
+keymap({ "n", "v" }, "<leader>y", '"*y')
+keymap("n", "<leader>Y", '"*Y')
 
-keymap({ 'n', 'v' }, '<leader>p', '"*p')
-keymap({ 'n', 'v' }, '<leader>P', '"*P')
+keymap({ "n", "v" }, "<leader>p", '"*p')
+keymap({ "n", "v" }, "<leader>P", '"*P')
