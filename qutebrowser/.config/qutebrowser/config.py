@@ -11,7 +11,8 @@ config.bind(',p', 'config-cycle -p content.plugins ;; reload')
 
 config.bind(',rta', 'open {url}top/?sort=top&t=all')
 config.bind(',rtv', 'spawn alacritty -e "rtv {url}"')
-config.bind(',c', 'spawn -d firefox {url}')
+config.bind(',f', 'spawn -d firefox {url}')
+config.bind(',c', 'spawn -d chromium {url}')
 
 # Keyboardio
 config.bind('<Shift-Left>', 'back')
@@ -27,16 +28,19 @@ c.url.searchengines['btc'] = 'https://www.blockchain.com/btc/address/{}'
 c.url.searchengines['http'] = 'https://httpstatuses.com/{}'
 c.url.searchengines['duden'] = 'https://www.duden.de/suchen/dudenonline/{}'
 c.url.searchengines['dictcc'] = 'https://www.dict.cc/?s={}'
-#c.url.searchengines['maps'] = 'https://www.google.com/maps?q=%s'
+# c.url.searchengines['maps'] = 'https://www.google.com/maps?q=%s'
 c.url.searchengines['y'] = 'https://www.youtube.com/results?search_query={}'
+c.url.searchengines['g'] = 'https://www.google.com/search?q={}'
 
 c.aliases['ytdl'] = """spawn -v -m bash -c 'cd ~/vid/yt && youtube-dl "$@"' _ {url}"""
 
 c.fonts.default_family = 'Hack Nerd Font'
-c.fonts.default_size = '10pt'
+c.fonts.default_size = '10pt' # 10
 
-c.fonts.web.size.default = 18 #16
-c.fonts.web.size.default_fixed = 15 #13
+c.fonts.web.size.default = 20 #18
+c.fonts.web.size.default_fixed = 17 #15
+
+c.fonts.hints = 'bold 15px default_family'
 
 c.search.incremental = True
 c.editor.command = ['code', '-nw', '{}']
@@ -44,7 +48,8 @@ c.editor.command = ['code', '-nw', '{}']
 #c.qt.args = ['ppapi-widevine-path=/usr/lib/qt/plugins/ppapi/libwidevinecdmadapter.so']
 
 c.content.javascript.enabled = False
-#config.source('perdomain.py')
+config.set('content.javascript.clipboard', 'access', 'https://chat.openai.com')
+config.set('content.javascript.clipboard', 'access', 'https://github.com')
 
 # Dark mode
 # ask nicely for the dark mode if available
