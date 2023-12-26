@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 local set = vim.opt
 
 set.termguicolors = true
@@ -13,7 +15,7 @@ set.relativenumber = true
 set.scrolloff = 5
 
 set.history = 9999
-set.wildmode = 'longest:list'
+set.wildmode = "longest:list"
 
 set.ignorecase = true
 set.smartcase = true

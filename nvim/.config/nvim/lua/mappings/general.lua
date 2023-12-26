@@ -7,6 +7,17 @@ map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent =
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
+--centered half page up down
+map("n", "<C-d>", "<C-d>zz", { desc = "Half page Down centered" })
+map("n", "<C-u>", "<C-u>zz", { desc = "Half page up centered" })
+
+-- yank put to primary register
+map({ "n", "v" }, "<leader>y", '"*y', { desc = "Yank to clipboard(*) register" })
+map("n", "<leader>Y", '"*Y', { desc = "Yank to clipboard(*) register 'Y' version" })
+
+map({ "n", "v" }, "<leader>p", '"*p', { desc = "Paste from primary register" })
+map({ "n", "v" }, "<leader>P", '"*P', { desc = "Paste from primary register 'P' version" })
+
 -- Move to window using the <ctrl> hjkl keys
 map("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
 map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
@@ -72,6 +83,8 @@ map("v", ">", ">gv")
 
 -- lazy
 map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+-- mason
+map("n", "<leader>cm", "<cmd>Mason<cr>", { desc = "Mason" })
 
 -- new file
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
