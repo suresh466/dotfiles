@@ -15,5 +15,5 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 -- enable imports sorting on format with biome
 conform.formatters.biome = {
-	prepend_args = { "check", "sort", "--apply" },
+	prepend_args = { "check", "sort", "--apply", "--linter-enabled", "false" },
 }
