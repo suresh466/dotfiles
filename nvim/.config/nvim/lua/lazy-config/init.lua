@@ -21,15 +21,6 @@ require("lazy").setup({
 		end,
 	},
 	"ellisonleao/gruvbox.nvim",
-
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-		},
-	},
 	"nvim-lualine/lualine.nvim",
 
 	--requires
@@ -73,7 +64,6 @@ require("lazy").setup({
 	"saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
 	"rafamadriz/friendly-snippets",
 
-	"jose-elias-alvarez/null-ls.nvim", -- provides lsp hooks
 	"folke/neodev.nvim", -- for lua_ls lsp server config
 	"onsails/lspkind.nvim", -- for vs-code like pictograms in builtin nvim lsp
 

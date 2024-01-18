@@ -4,7 +4,6 @@ require("mappings.general") -- after lazy because it uses lazy utils indirectly
 
 require("colorschemes-config.gruvbox")
 require("lualine-config")
-require("neotree-config")
 
 require("mason-config.mason")
 
