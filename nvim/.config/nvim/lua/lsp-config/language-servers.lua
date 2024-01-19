@@ -9,9 +9,9 @@ require("neodev").setup({
 })
 
 local servers = {
-	"pyright",
 	"lua_ls",
 	"tsserver",
+	"jedi_language_server",
 }
 
 for _, lsp in ipairs(servers) do

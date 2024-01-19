@@ -4,6 +4,7 @@ conform.setup({
 		lua = { "stylua" },
 		javascript = { "biome" },
 		typescript = { "biome" },
+		python = { "ruff_format", "ruff_fix" },
 	},
 })
 
@@ -16,4 +17,9 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- enable imports sorting on format with biome
 conform.formatters.biome = {
 	prepend_args = { "check", "sort", "--apply", "--linter-enabled", "false" },
+}
+
+-- just perform import sorting no auto fixing
+conform.formatters.ruff_fix = {
+	args = { "--select", "I", "--fix", "-e", "-n", "--stdin-filename", "$FILENAME" },
 }
