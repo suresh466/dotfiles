@@ -24,6 +24,19 @@ function M.setup(_)
 			},
 			{
 				type = "pwa-node",
+				request = "launch",
+				name = "Launch file(ts)",
+				program = "${file}",
+				cwd = "${workspaceFolder}",
+				skipFiles = { "<node_internals>/**", "node_modules/**" },
+				runtimeArgs = { "--loader=ts-node/esm" },
+				resolveSourceMapLocations = {
+					"${workspaceFolder}/**",
+					"!**/node_modules/**",
+				},
+			},
+			{
+				type = "pwa-node",
 				request = "attach",
 				name = "Attach",
 				processId = require("dap.utils").pick_process,
