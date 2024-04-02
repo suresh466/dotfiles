@@ -1,6 +1,8 @@
 require("lint").linters_by_ft = {
 	javascript = { "biomejs" },
+	javascriptreact = { "biomejs" },
 	typescript = { "biomejs" },
+	typescriptreact = { "biomejs" },
 	python = { "ruff" },
 }
 
