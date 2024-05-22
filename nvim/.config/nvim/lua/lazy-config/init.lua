@@ -38,18 +38,18 @@ require("lazy").setup({
 	"nvim-treesitter/nvim-treesitter-refactor",
 	"nvim-treesitter/nvim-treesitter-context",
 	--to be tried
-	--{
-	--    'folke/zen-mode.nvim',
-	--    config = function()
-	--        require('zen-mode').setup({})
-	--    end,
-	--},
-	--{
-	--    'folke/twilight.nvim',
-	--    config = function()
-	--        require('twilight').setup({})
-	--    end,
-	--},
+	{
+		"folke/zen-mode.nvim",
+		config = function()
+			require("zen-mode").setup({})
+		end,
+	},
+	{
+		"folke/twilight.nvim",
+		config = function()
+			require("twilight").setup({})
+		end,
+	},
 
 	--lsp plugs
 	"neovim/nvim-lspconfig", -- Configurations collection for inbuilt LSP client
@@ -59,6 +59,7 @@ require("lazy").setup({
 	"hrsh7th/cmp-buffer", -- LSP source for nvim-cmp
 	"hrsh7th/cmp-path", -- LSP source for nvim-cmp
 	"hrsh7th/cmp-cmdline", -- LSP source for nvim-cmp
+	"rcarriga/cmp-dap", -- LSP source for nvim-cmp
 
 	"L3MON4D3/LuaSnip", -- Snippets plugin
 	"saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
@@ -71,6 +72,7 @@ require("lazy").setup({
 	{
 		"mfussenegger/nvim-dap",
 		dependencies = {
+			"nvim-neotest/nvim-nio", -- for async stuff
 			"rcarriga/nvim-dap-ui", --ui for dap
 			"theHamsta/nvim-dap-virtual-text", --virtual text support
 			"mfussenegger/nvim-dap-python", --python-extension for DAP conf
@@ -83,8 +85,8 @@ require("lazy").setup({
 	--    dependencies = {
 	--        'nvim-neotest/neotest-python',
 	--    },
-	--},
 
+	--},
 	--commentary
 	{
 		"numToStr/Comment.nvim",
