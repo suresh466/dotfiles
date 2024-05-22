@@ -23,3 +23,5 @@ set.smartcase = true
 -- mouse support only in insert mode
 --set.mouse = 'i'
 -- set.wrap = false
+--
+set.updatetime = 50
