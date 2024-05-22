@@ -48,7 +48,7 @@ c.editor.command = ['code', '-nw', '{}']
 #c.qt.args = ['ppapi-widevine-path=/usr/lib/qt/plugins/ppapi/libwidevinecdmadapter.so']
 
 c.content.javascript.enabled = False
-config.set('content.javascript.clipboard', 'access', 'https://chat.openai.com')
+config.set('content.javascript.clipboard', 'access', 'https://chatgpt.com')
 config.set('content.javascript.clipboard', 'access', 'https://github.com')
 
 # Dark mode
