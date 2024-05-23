@@ -10,6 +10,7 @@ qutebrowser/.config/qutebrowser/qsettings
 
 #nvim
 plugin
+lazy-lock.json
 
 #awesomeWM
 awesome-wm-widgets
