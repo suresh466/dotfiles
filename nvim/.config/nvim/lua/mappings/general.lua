@@ -1,6 +1,9 @@
 local Util = require("lazyvim.util")
 local map = Util.silent_keymap_set
 
+-- file explorer
+map("n", "<leader>e", "<cmd>Vexplore<cr>", { desc = "File Explorer" })
+
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -24,10 +27,10 @@ map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
 map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
 map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
 
--- Move Lines - can't use Window Manger uses Alt key [TODO]
+-- Move Lines
 map("n", "<C-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
 map("n", "<C-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
--- mapped for snippets
+-- mapped for snippets [TODO]
 --map("i", "<C-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
 --map("i", "<C-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
 map("v", "<C-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
