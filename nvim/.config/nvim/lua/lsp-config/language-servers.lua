@@ -12,6 +12,7 @@ local servers = {
 	"lua_ls",
 	"tsserver",
 	"jedi_language_server",
+	"tailwindcss",
 }
 
 for _, lsp in ipairs(servers) do

@@ -4,6 +4,7 @@ local luasnip = require("luasnip")
 -- nvim-cmp setup
 local cmp = require("cmp")
 local lspkind = require("lspkind")
+local tailwindcss_colorizer_cmp = require("tailwindcss-colorizer-cmp")
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -27,19 +28,27 @@ cmp.setup({
 		{ name = "buffer", keyword_length = 4 },
 	},
 	formatting = {
-		format = lspkind.cmp_format({
-			mode = "symbol_text", -- show only symbol annotations
-			maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-			-- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-			ellipsis_char = "...",
-			menu = {
-				nvim_lsp = "[LSP]",
-				luasnip = "[snip]",
-				buffer = "[buf]",
-				path = "[path]",
-				dap = "[dap]",
-			},
-		}),
+		format = function(entry, vim_item)
+			-- apply tailwindcss formatter
+			vim_item = tailwindcss_colorizer_cmp.formatter(entry, vim_item)
+
+			-- apply lspkind formatter
+			vim_item = lspkind.cmp_format({
+				mode = "symbol_text", -- show only symbol annotations
+				maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+				-- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+				ellipsis_char = "...",
+				menu = {
+					nvim_lsp = "[LSP]",
+					luasnip = "[snip]",
+					buffer = "[buf]",
+					path = "[path]",
+					dap = "[dap]",
+				},
+			})(entry, vim_item)
+
+			return vim_item
+		end,
 	},
 	experimental = {
 		ghost_text = false,
