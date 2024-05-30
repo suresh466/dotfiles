@@ -7,6 +7,7 @@ conform.setup({
 		typescript = { "biome" },
 		typescriptreact = { "biome" },
 		python = { "ruff_format", "ruff_fix" },
+		htmldjango = { "djlint" },
 	},
 })
 
