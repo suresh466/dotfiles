@@ -4,6 +4,8 @@ require("lint").linters_by_ft = {
 	typescript = { "biomejs" },
 	typescriptreact = { "biomejs" },
 	python = { "ruff" },
+	html = { "htmlhint" },
+	htmldjango = { "djlint" },
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {
