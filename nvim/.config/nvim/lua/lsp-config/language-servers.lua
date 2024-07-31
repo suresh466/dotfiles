@@ -12,6 +12,7 @@ local servers = {
 	"lua_ls",
 	"tsserver",
 	"jedi_language_server",
+	"pyright",
 	"tailwindcss",
 	"emmet_language_server",
 }
@@ -35,6 +36,19 @@ lspconfig.lua_ls.setup({
 			},
 		},
 	},
+})
+
+-- Configure pyright
+lspconfig.pyright.setup({
+	on_attach = function(client, bufnr)
+		-- Disable hover for pyright to prevent overriding jedi's docstrings
+		client.server_capabilities.hoverProvider = false
+
+		-- Set up your preferred keybindings here
+		local opts = { noremap = true, silent = true, buffer = bufnr }
+		vim.keymap.set("n", "<space>t", vim.lsp.buf.type_definition, opts)
+		-- Add more pyright-specific keybindings as needed
+	end,
 })
 
 -- Use LspAttach autocommand to only map the following keys
