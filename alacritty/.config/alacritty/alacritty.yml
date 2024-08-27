@@ -113,25 +113,24 @@ env:
   #multiplier: 3
 
 # Font configuration
-#
+
 font:
   normal:
-    family: 'Hack Nerd Font'
+    family: 'HackNerdFont'
     style: Regular
 
   bold:
-    family: 'Hack Nerd Font'
+    family: 'HackNerdFont'
     style: Bold
 
   italic:
-    family: 'Hack Nerd Font'
+    family: 'HackNerdFont'
     style: Italic
 
   bold_italic:
-    family: 'Hack Nerd Font'
+    family: 'HackNerdFont'
     style: Bold Italic
 
-#
 #font:
   # Normal (roman) font face
   #normal:

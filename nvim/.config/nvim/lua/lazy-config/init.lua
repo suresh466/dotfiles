@@ -16,14 +16,30 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{
 		"folke/which-key.nvim",
-		config = function()
-			require("which-key").setup({})
-		end,
+		event = "VeryLazy",
+		opts = {
+			win = {
+				wo = {
+					-- transparency
+					winblend = 20,
+				},
+			},
+		},
+		keys = {
+			{
+				"<leader>?",
+				function()
+					require("which-key").show({ global = false })
+				end,
+				desc = "Buffer Local Keymaps (which-key)",
+			},
+		},
 	},
 	"ellisonleao/gruvbox.nvim",
 	"nvim-lualine/lualine.nvim",
 
 	--requires
+	{ "echasnovski/mini.icons", version = false },
 	"nvim-tree/nvim-web-devicons",
 	"nvim-lua/plenary.nvim",
 
