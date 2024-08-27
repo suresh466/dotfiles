@@ -56,18 +56,33 @@ require("treesitter-context").setup({
 
 -- Register Treesitter keybindings with which-key
 local wk = require("which-key")
-wk.register({
-	t = {
-		n = {
-			name = "Treesitter Navigation",
-			d = { "Go to Definition" },
-			D = { "List Definitions" },
-			O = { "List Definitions (TOC)" },
-			["<a-*>"] = { "Go to Next Usage" },
-			["<a-#>"] = { "Go to Previous Usage" },
-		},
-		r = {
-			r = { "Smart Rename" },
-		},
+wk.add({
+	{ "t", group = "Treesitter" },
+	{ "tn", group = "Treesitter Navigation" },
+	{
+		"tnd",
+		"<cmd>lua require('nvim-treesitter.refactor.navigation').goto_definition()<CR>",
+		desc = "Go to Definition",
 	},
+	{
+		"tnD",
+		"<cmd>lua require('nvim-treesitter.refactor.navigation').list_definitions()<CR>",
+		desc = "List Definitions",
+	},
+	{
+		"tnO",
+		"<cmd>lua require('nvim-treesitter.refactor.navigation').list_definitions_toc()<CR>",
+		desc = "List Definitions (TOC)",
+	},
+	{
+		"tn<a-*>",
+		"<cmd>lua require('nvim-treesitter.refactor.navigation').goto_next_usage()<CR>",
+		desc = "Go to Next Usage",
+	},
+	{
+		"tn<a-#>",
+		"<cmd>lua require('nvim-treesitter.refactor.navigation').goto_previous_usage()<CR>",
+		desc = "Go to Previous Usage",
+	},
+	{ "trr", "<cmd>lua require('nvim-treesitter.refactor.smart_rename').smart_rename()<CR>", desc = "Smart Rename" },
 }, { mode = "n" })
