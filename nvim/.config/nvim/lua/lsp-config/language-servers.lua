@@ -130,4 +130,16 @@ vim.diagnostic.config({
 --vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 --vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 --vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist) --[TODO]
+vim.keymap.set("n", "<space>qq", vim.diagnostic.setloclist) --[TODO]
+vim.keymap.set("n", "<space>qe", function()
+	vim.diagnostic.setloclist({ severity = vim.diagnostic.severity.ERROR })
+end)
+vim.keymap.set("n", "<space>qe", function()
+	vim.diagnostic.setloclist({ severity = vim.diagnostic.severity.WARN })
+end)
+vim.keymap.set("n", "<space>qi", function()
+	vim.diagnostic.setloclist({ severity = vim.diagnostic.severity.INFO })
+end)
+vim.keymap.set("n", "<space>qh", function()
+	vim.diagnostic.setloclist({ severity = vim.diagnostic.severity.HINT })
+end)
