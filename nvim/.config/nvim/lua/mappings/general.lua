@@ -28,8 +28,9 @@ map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window wi
 map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
 
 -- Move Lines
-map("n", "<C-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
-map("n", "<C-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+-- mapped for harpoon
+-- map("n", "<C-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
+-- map("n", "<C-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
 -- mapped for snippets [TODO]
 --map("i", "<C-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
 --map("i", "<C-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })

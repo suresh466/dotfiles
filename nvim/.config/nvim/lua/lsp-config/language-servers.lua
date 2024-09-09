@@ -10,7 +10,7 @@ require("neodev").setup({
 
 local servers = {
 	"lua_ls",
-	"tsserver",
+	"ts_ls",
 	"jedi_language_server",
 	"pyright",
 	"tailwindcss",

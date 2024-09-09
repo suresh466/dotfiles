@@ -15,6 +15,67 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{
+		"epwalsh/pomo.nvim",
+		version = "*", -- Recommended, use latest release instead of latest commit
+		lazy = true,
+		cmd = { "TimerStart", "TimerRepeat", "TimerSession" },
+		dependencies = {
+			-- Optional, but highly recommended if you want to use the "Default" timer
+			"rcarriga/nvim-notify",
+		},
+		opts = {
+			sticky = false,
+			-- You can optionally define custom timer sessions.
+			sessions = {
+				-- Example session configuration for a session called "pomodoro".
+				pomodoro = {
+					{ name = "Work", duration = "25m" },
+					{ name = "Short Break", duration = "5m" },
+					{ name = "Work", duration = "25m" },
+					{ name = "Short Break", duration = "5m" },
+					{ name = "Work", duration = "25m" },
+					{ name = "Short Break", duration = "5m" },
+					{ name = "Work", duration = "25m" },
+					{ name = "Long Break", duration = "10m" },
+				},
+			},
+		},
+		keys = {
+			{
+				"<leader>pts",
+				":TimerStart Session pomodoro<CR>",
+				{ desc = "start pomodoro session" },
+			},
+			{
+				"<leader>pt",
+				function()
+					require("telescope").extensions.pomodori.timers()
+				end,
+				{ desc = "Manage Pomodori Timers" },
+			},
+		},
+	},
+	{
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
+
+	{
+		"jiaoshijie/undotree",
+		opts = {
+			window = {
+				winblend = 10,
+			},
+		},
+		dependencies = "nvim-lua/plenary.nvim",
+		config = true,
+		keys = { -- load the plugin only when using it's keybinding:
+			{ "<leader>ut", "<cmd>lua require('undotree').toggle()<cr>", desc = "Toggle Undotree" },
+		},
+	},
+
+	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		opts = {

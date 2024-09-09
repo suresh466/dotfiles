@@ -2,6 +2,7 @@ require("settings")
 require("lazy-config")
 require("mappings.general") -- after lazy because it uses lazy utils indirectly
 
+require("harpoon-config")
 require("colorschemes-config.gruvbox")
 require("lualine-config")
 
@@ -14,7 +15,7 @@ require("luasnip-config")
 
 require("dap-config")
 --require('neotest-config')
-require('telescope-config')
+require("telescope-config")
 
 require("lint-config")
 require("conform-config")

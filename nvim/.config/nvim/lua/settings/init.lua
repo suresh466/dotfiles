@@ -4,6 +4,8 @@ local set = vim.opt
 
 set.termguicolors = true
 
+set.undofile = true
+
 set.autoindent = true
 set.expandtab = true
 set.tabstop = 4

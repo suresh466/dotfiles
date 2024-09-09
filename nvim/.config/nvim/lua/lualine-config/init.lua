@@ -131,12 +131,27 @@ ins_left({
 	-- rootdir
 	function()
 		local root = Util.root.get({ normalize = true })
-		return vim.fs.basename(root)
+		local cwd = vim.fn.getcwd()
+
+		if root ~= cwd then
+			cwd = vim.fs.basename(cwd)
+		else
+			cwd = "-"
+		end
+
+		local formatted_string = vim.fs.basename(root) .. "(" .. cwd .. ")"
+
+		return formatted_string
 	end,
 })
 
 ins_left({
-	"filename",
+	-- filename with parent directory
+	function()
+		local parent_dir = vim.fn.expand("%:p:h:t")
+		local filename = vim.fn.expand("%:t")
+		return parent_dir .. "/" .. filename
+	end,
 	cond = conditions.buffer_not_empty,
 	color = { fg = colors.yellow, gui = "bold" },
 })
@@ -187,6 +202,22 @@ ins_left({
 
 -- Add components to right sections
 ins_right({
+	-- pomodoro timer
+	function()
+		local ok, pomo = pcall(require, "pomo")
+		if not ok then
+			return ""
+		end
+
+		local timer = pomo.get_first_to_finish()
+		if timer == nil then
+			return ""
+		end
+
+		return "󰄉 " .. tostring(timer)
+	end,
+})
+ins_right({
 	"o:encoding", -- option component same as &encoding in viml
 	fmt = string.upper, -- I'm not sure why it's upper case either ;)
 	cond = conditions.hide_in_width,
@@ -196,7 +227,8 @@ ins_right({
 ins_right({
 	"fileformat",
 	fmt = string.upper,
-	icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
+	-- icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
+	icons_enabled = true,
 	color = { fg = colors.green, gui = "bold" },
 })
 
