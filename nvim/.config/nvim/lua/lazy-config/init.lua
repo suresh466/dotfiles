@@ -55,6 +55,7 @@ require("lazy").setup({
 			},
 		},
 	},
+
 	{
 		"ThePrimeagen/harpoon",
 		branch = "harpoon2",
@@ -62,16 +63,13 @@ require("lazy").setup({
 	},
 
 	{
-		"jiaoshijie/undotree",
-		opts = {
-			window = {
-				winblend = 10,
+		"mbbill/undotree",
+		keys = {
+			{
+				"<leader>ut",
+				"<cmd>UndotreeToggle<cr>",
+				{ desc = "Toggle Undotree" },
 			},
-		},
-		dependencies = "nvim-lua/plenary.nvim",
-		config = true,
-		keys = { -- load the plugin only when using it's keybinding:
-			{ "<leader>ut", "<cmd>lua require('undotree').toggle()<cr>", desc = "Toggle Undotree" },
 		},
 	},
 
