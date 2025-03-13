@@ -40,6 +40,13 @@ lspconfig.lua_ls.setup({
 
 -- Configure pyright
 lspconfig.pyright.setup({
+	settings = {
+		python = {
+			analysis = {
+				typeCheckingMode = "off",
+			},
+		},
+	},
 	on_attach = function(client, bufnr)
 		-- Disable hover for pyright to prevent overriding jedi's docstrings
 		client.server_capabilities.hoverProvider = false
@@ -121,7 +128,7 @@ end
 vim.diagnostic.config({
 	virtual_text = false,
 	float = {
-		source = "if_many",
+		source = true,
 		border = "rounded",
 	},
 })
