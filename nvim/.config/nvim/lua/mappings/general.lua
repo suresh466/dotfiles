@@ -1,6 +1,9 @@
 local Util = require("lazyvim.util")
 local map = Util.silent_keymap_set
 
+-- copilot
+map("n", "<leader>aa", "<cmd>CopilotChatToggle<cr>", { desc = "Open CopilotChat" })
+
 -- file explorer
 map("n", "<leader>e", "<cmd>Vexplore<cr>", { desc = "File Explorer" })
 
@@ -15,11 +18,11 @@ map("n", "<C-d>", "<C-d>zz", { desc = "Half page Down centered" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Half page up centered" })
 
 -- yank put to primary register
-map({ "n", "v" }, "<leader>y", '"*y', { desc = "Yank to clipboard(*) register" })
-map("n", "<leader>Y", '"*Y', { desc = "Yank to clipboard(*) register 'Y' version" })
+map({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to clipboard(+) register" })
+map("n", "<leader>Y", '"+Y', { desc = "Yank to clipboard(+) register 'Y' version" })
 
-map({ "n", "v" }, "<leader>p", '"*p', { desc = "Paste from primary register" })
-map({ "n", "v" }, "<leader>P", '"*P', { desc = "Paste from primary register 'P' version" })
+map({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from primary register" })
+map({ "n", "v" }, "<leader>P", '"+P', { desc = "Paste from primary register 'P' version" })
 
 -- Resize window using <ctrl> arrow keys
 map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
@@ -90,6 +93,15 @@ map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 
 map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
+
+map("n", "<leader>xa", function()
+	local bufs = vim.fn.getbufinfo({ bufloaded = 1 })
+	local buf_nums = {}
+	for _, buf in ipairs(bufs) do
+		table.insert(buf_nums, buf.bufnr)
+	end
+	vim.diagnostic.setqflist({ bufnr = buf_nums })
+end, { desc = "All loaded buffers diagnostics to quickfix" })
 
 map("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
 map("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
