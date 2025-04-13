@@ -3,12 +3,13 @@ local conform = require("conform")
 conform.setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
-		javascript = { "biome" },
-		javascriptreact = { "biome" },
-		typescript = { "biome" },
-		typescriptreact = { "biome" },
+		javascript = { "biome", "biome-organize-imports" },
+		javascriptreact = { "biome", "biome-organize-imports" },
+		typescript = { "biome", "biome-organize-imports" },
+		typescriptreact = { "biome", "biome-organize-imports" },
 		python = { "ruff_format", "ruff_organize_imports" },
 		htmldjango = { "djlint" },
+		["_"] = { "trim_whitespace", "trim_newlines" },
 	},
 	format_on_save = function(bufnr)
 		if slow_format_filetypes[vim.bo[bufnr].filetype] then
@@ -37,7 +38,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	end,
 })
 
--- enable imports sorting on format with biome
-conform.formatters.biome = {
-	prepend_args = { "check", "sort", "--apply", "--linter-enabled", "false" },
-}
+-- -- enable imports sorting on format with biome
+-- conform.formatters.biome = {
+-- 	prepend_args = { "check", "sort", "--write", "--linter-enabled", "false" },
+-- }
