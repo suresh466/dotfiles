@@ -1,11 +1,8 @@
-require("settings")
+require("config.settings")
 require("lazy-config")
 require("mappings.general") -- after lazy because it uses lazy utils indirectly
 
-require("harpoon-config")
-require("colorschemes-config.gruvbox")
 require("avante_lib").load()
-require("lualine-config")
 
 require("mason-config.mason")
 
