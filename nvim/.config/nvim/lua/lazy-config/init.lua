@@ -601,7 +601,7 @@ require("lazy").setup({
 	{ "nvim-telescope/telescope.nvim", branch = "0.1.x" },
 
 	--mason
-	"williamboman/mason.nvim",
+	{ "williamboman/mason.nvim", opts = {} },
 
 	--treesitter
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
