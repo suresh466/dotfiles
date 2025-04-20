@@ -565,10 +565,10 @@ awful.rules.rules = {
 
 	-- Set Firefox to always map on the tag named "2" on screen 1.
 	{ rule = { class = "qutebrowser" }, properties = { screen = 1, tag = "2" } },
-	{ rule = { class = "bravebrowser" }, properties = { screen = 1, tag = "2" } },
+	{ rule = { class = "brave-browser-stable" }, properties = { screen = 1, tag = "2" } },
 
 	-- set chromium on tag 3 always
-	{ rule = { class = "Chromium" }, properties = { screen = 1, tag = "3" } },
+	{ rule = { class = "Chromium" }, properties = { screen = 1, tag = "2" } },
 }
 -- }}}
 

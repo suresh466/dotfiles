@@ -131,3 +131,5 @@ source ~/.env_vars
 export N_PREFIX="$HOME/.local/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
 export PATH=$PATH:/usr/local/go/bin
+
+eval $(ssh-agent) >> /dev/null
