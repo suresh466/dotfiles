@@ -604,9 +604,101 @@ require("lazy").setup({
 	{ "williamboman/mason.nvim", opts = {} },
 
 	--treesitter
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-	"nvim-treesitter/nvim-treesitter-refactor",
-	"nvim-treesitter/nvim-treesitter-context",
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-refactor",
+		},
+		opts = {
+			ensure_installed = { "c", "lua", "python", "javascript", "typescript" },
+			-- Install parsers synchronously (only applied to `ensure_installed`)
+			sync_install = false,
+			-- Automatically install missing parsers when entering buffer
+			-- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+			auto_install = true,
+			highlight = {
+				-- `false` will disable the whole extension
+				enable = true,
+			},
+			refactor = {
+				highlight_definitions = {
+					enable = true,
+					-- Set to false if you have an `updatetime` of ~100.
+					clear_on_cursor_move = true,
+				},
+				smart_rename = {
+					enable = true,
+					-- Assign keymaps to false to disable them, e.g. `smart_rename = false`.
+					keymaps = {
+						smart_rename = false,
+						--smart_rename = "grr",
+					},
+				},
+				navigation = {
+					enable = true,
+					-- Assign keymaps to false to disable them, e.g. `goto_definition = false`.
+					keymaps = {
+						goto_definition = "gnd",
+						list_definitions = "gnD",
+						list_definitions_toc = "gO",
+						goto_next_usage = "<a-*>",
+						goto_previous_usage = "<a-#>",
+					},
+				},
+			},
+			incremental_selection = {
+				enable = true,
+				keymaps = {
+					init_selection = "<c-space>", -- set to `false` to disable one of the mappings
+					node_incremental = "<space>",
+					scope_incremental = "<c-space>",
+					node_decremental = "<bs>",
+				},
+			},
+			--for the sake of not getting false error
+			ignore_install = {},
+			modules = {},
+		},
+		keys = {
+			{ "t", desc = "Treesitter" },
+			{ "tn", desc = "Treesitter Navigation" },
+			{
+				"tnd",
+				"<cmd>lua require('nvim-treesitter.refactor.navigation').goto_definition()<CR>",
+				desc = "Go to Definition",
+			},
+			{
+				"tnD",
+				"<cmd>lua require('nvim-treesitter.refactor.navigation').list_definitions()<CR>",
+				desc = "List Definitions",
+			},
+			{
+				"tnO",
+				"<cmd>lua require('nvim-treesitter.refactor.navigation').list_definitions_toc()<CR>",
+				desc = "List Definitions (TOC)",
+			},
+			{
+				"tn<a-*>",
+				"<cmd>lua require('nvim-treesitter.refactor.navigation').goto_next_usage()<CR>",
+				desc = "Go to Next Usage",
+			},
+			{
+				"tn<a-#>",
+				"<cmd>lua require('nvim-treesitter.refactor.navigation').goto_previous_usage()<CR>",
+				desc = "Go to Previous Usage",
+			},
+			{
+				"trr",
+				"<cmd>lua require('nvim-treesitter.refactor.navigation').smart_rename()<CR>",
+				desc = "Smart Rename",
+			},
+		},
+		config = function(opts)
+			require("nvim-treesitter.configs").setup(opts)
+		end,
+	},
+	{ "nvim-treesitter/nvim-treesitter-context", opts = { mode = "cursor", max_lines = 3 } },
 	--to be tried
 	{
 		"folke/zen-mode.nvim",
@@ -666,10 +758,96 @@ require("lazy").setup({
 	},
 
 	--linting
-	"mfussenegger/nvim-lint",
+	{
+		"mfussenegger/nvim-lint",
+		event = { "BufReadPost", "BufWritePost" },
+		opts = {
+			linters_by_ft = {
+				javascript = { "biomejs" },
+				javascriptreact = { "biomejs" },
+				typescript = { "biomejs" },
+				typescriptreact = { "biomejs" },
+				python = { "ruff" },
+				html = { "htmlhint" },
+				htmldjango = { "djlint" },
+			},
+		},
+		config = function(opts)
+			local lint = require("lint")
+
+			-- Set up linters
+			lint.linters_by_ft = opts.linters_by_ft
+
+			-- Create autocmd to trigger linting
+			vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {
+				callback = function()
+					lint.try_lint()
+				end,
+			})
+
+			-- Add user command for linter info
+			vim.api.nvim_create_user_command("LintInfo", function()
+				local ft = vim.bo.filetype
+				local linters = lint.linters_by_ft[ft] or {}
+				if #linters == 0 then
+					print("No linters configured for filetype: " .. ft)
+				else
+					print("Linters configured for filetype: " .. ft)
+					for _, linter in ipairs(linters) do
+						print("  - " .. linter)
+					end
+				end
+			end, {})
+		end,
+	},
 
 	--formatting
-	"stevearc/conform.nvim",
+	{
+		"stevearc/conform.nvim",
+		event = { "BufWritePre" },
+		cmd = { "ConformInfo" },
+		keys = {
+			{
+				"<leader>cf",
+				function()
+					require("conform").format({ async = true, lsp_format = "fallback" })
+				end,
+				desc = "Format buffer",
+			},
+		},
+		opts = {
+			formatters_by_ft = {
+				lua = { "stylua" },
+				javascript = { "biome", "biome-organize-imports" },
+				javascriptreact = { "biome", "biome-organize-imports" },
+				typescript = { "biome", "biome-organize-imports" },
+				typescriptreact = { "biome", "biome-organize-imports" },
+				python = { "ruff_format", "ruff_organize_imports" },
+				htmldjango = { "djlint" },
+				["_"] = { "trim_whitespace", "trim_newlines" },
+			},
+			format_on_save = function(bufnr)
+				local slow_format_filetypes = {}
+				if slow_format_filetypes[vim.bo[bufnr].filetype] then
+					return
+				end
+				local function on_format(err)
+					if err and err:match("timeout$") then
+						slow_format_filetypes[vim.bo[bufnr].filetype] = true
+					end
+				end
+
+				return { timeout_ms = 200, lsp_format = "fallback" }, on_format
+			end,
+			format_after_save = function(bufnr)
+				local slow_format_filetypes = {}
+				if not slow_format_filetypes[vim.bo[bufnr].filetype] then
+					return
+				end
+				return { lsp_format = "fallback" }
+			end,
+		},
+	},
 
 	--ai
 	{
