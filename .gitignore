@@ -1,3 +1,8 @@
+# jkoolit
+jkoolit/.config/rofi/.current_wallpaper
+jkoolit/.config/waybar/config
+jkoolit/.config/waybar/style.css
+
 # vim
 *.swp
 
