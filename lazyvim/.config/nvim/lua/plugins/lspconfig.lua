@@ -7,7 +7,13 @@ return {
         source = true,
         border = "rounded",
       },
-      underline = false,
+      underline = {
+        severity = {
+          vim.diagnostic.severity.WARN,
+          vim.diagnostic.severity.HINT,
+          vim.diagnostic.severity.INFO,
+        },
+      },
     },
   },
 }
