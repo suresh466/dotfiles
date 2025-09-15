@@ -43,9 +43,10 @@ return {
       table.insert(dap.configurations[language], {
         type = "pwa-chrome",
         request = "attach",
+        processId = require("dap.utils").pick_process,
         name = "Attach to React",
         port = 9222,
-        webRoot = "${workspaceFolder}/src",
+        webRoot = "${workspaceFolder}",
         sourceMaps = true,
       })
       table.insert(dap.configurations[language], {
@@ -53,7 +54,7 @@ return {
         request = "launch",
         name = "Launch React App",
         url = "http://localhost:5173",
-        webRoot = "${workspaceFolder}/src",
+        webRoot = "${workspaceFolder}",
         sourceMaps = true,
       })
     end
