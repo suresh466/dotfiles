@@ -112,3 +112,7 @@ if [ -x /usr/bin/dircolors ]; then
   #alias fgrep='fgrep --color=auto'
   #alias egrep='egrep --color=auto'
 fi
+
+# tmux sessionizer bash completion
+source <(COMPLETE=bash tms)
+bind -x '"\C-a": tms'

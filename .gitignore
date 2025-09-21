@@ -27,3 +27,6 @@ lazy-lock.json
 
 #awesomeWM
 awesome-wm-widgets
+
+#tmux
+tmux/.config/tmux/plugins
