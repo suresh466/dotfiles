@@ -13,6 +13,28 @@ return {
   "mfussenegger/nvim-dap",
   opts = function()
     local dap = require("dap")
+
+    dap.configurations.python = dap.configurations.python or {}
+
+    table.insert(dap.configurations.python, {
+      type = "python",
+      request = "launch",
+      name = "Django",
+      program = "${workspaceFolder}/manage.py",
+      django = true,
+      -- justMyCode = false,
+      args = function()
+        local port = "8001"
+        -- Schedule chromium launch after a short delay to wait for server
+        vim.schedule(function()
+          vim.defer_fn(function()
+            vim.fn.jobstart({ "chromium", "http://localhost:" .. port })
+          end, 500)
+        end)
+        return { "runserver", port, "--noreload", "--nothreading" }
+      end,
+    })
+
     -- ADD: Chrome adapter for React debugging
     if not dap.adapters["pwa-chrome"] then
       dap.adapters["pwa-chrome"] = {
