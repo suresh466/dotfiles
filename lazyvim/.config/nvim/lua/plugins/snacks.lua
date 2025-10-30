@@ -7,16 +7,24 @@ return {
     { "<leader>sG", LazyVim.pick("live_grep"), desc = "Grep (Root Dir)" },
   },
   opts = {
-    -- smooth scrolling
-    scroll = {
-      enabled = false,
-    },
+    -- scroll = {
+    --   enabled = false,
+    -- },
     terminal = {
       win = { position = "float" },
     },
     picker = {
       layout = { preset = "default", layout = { height = 0.99, width = 0.99 } },
       sources = {
+        files = {
+          hidden = true,
+        },
+        explorer = {
+          hidden = true,
+        },
+        grep = {
+          hidden = true,
+        },
         -- keymaps = { layout = "telescope" },
         -- files = {
         --   layout = "default",
