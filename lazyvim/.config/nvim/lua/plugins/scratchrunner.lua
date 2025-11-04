@@ -1,5 +1,5 @@
 return {
-  "DestopLine/scratch-runner.nvim",
+  "angeljreyes/scratch-runner.nvim",
   dependencies = "folke/snacks.nvim",
   opts = {
     sources = {
