@@ -4,6 +4,7 @@ return {
     formatters_by_ft = {
       htmldjango = { "djlint" },
       nginx = { "nginxfmt" },
+      astro = { "prettier", "rustywind" },
     },
     formatters = {
       djlint = {
