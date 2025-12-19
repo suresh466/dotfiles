@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # /* ---- 💫 https://github.com/JaKooLit 💫 ---- */
 # This script for selecting wallpapers (SUPER W)
 
@@ -93,7 +93,7 @@ menu() {
       fi
       printf "%s\x00icon\x1f%s\n" "$pic_name" "$cache_preview_image"
     else
-      printf "%s\x00icon\x1f%s\n" "$(echo "$pic_name" | cut -d. -f1)" "$pic_path"
+      printf "%s\x00icon\x1f%s\n" "$pic_name" "$pic_path"
     fi
   done
 }
