@@ -1,0 +1,9 @@
+(
+    rules: "",
+    model: "pc105+inet",
+    layout: "us",
+    variant: "",
+    options: Some("terminate:ctrl_alt_bksp,ctrl:swapcaps,altwin:swap_lalt_lwin"),
+    repeat_delay: 600,
+    repeat_rate: 25,
+)
