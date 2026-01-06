@@ -1,0 +1,43 @@
+display_full_path = false
+search_submodules = false
+recursive_submodules = false
+switch_filter_unknown = false
+session_sort_order = "Alphabetical"
+excluded_dirs = []
+search_dirs = [{path="/home/hawk/repos/", depth=1}, {path="/home/hawk/dotfiles/", depth=0}]
+sessions = []
+bookmarks = []
+clone_repo_switch = "Always"
+vcs_providers = ["git"]
+
+[picker_colors]
+highlight_color = "LightBlue"
+highlight_text_color = "Black"
+border_color = "DarkGray"
+info_color = "LightYellow"
+prompt_color = "LightGreen"
+
+[shortcuts]
+backspace = "backspace"
+ctrl-a = "move_to_line_start"
+ctrl-c = "cancel"
+ctrl-d = "delete"
+ctrl-e = "move_to_line_end"
+ctrl-j = "move_down"
+ctrl-k = "move_up"
+ctrl-n = "move_down"
+ctrl-p = "move_up"
+ctrl-u = "delete_to_line_start"
+ctrl-w = "delete_word"
+delete = "delete"
+down = "move_down"
+enter = "confirm"
+esc = "cancel"
+left = "cursor_left"
+right = "cursor_right"
+up = "move_up"
+
+[session_configs]
+
+[marks]
+

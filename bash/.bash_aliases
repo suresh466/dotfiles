@@ -1,3 +1,4 @@
+alias sxiv=nsxiv
 alias vim=nvim
 alias cat=bat
 # alias find=fd
