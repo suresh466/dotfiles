@@ -7,6 +7,9 @@ return {
     { "<leader>sG", LazyVim.pick("live_grep"), desc = "Grep (Root Dir)" },
   },
   opts = {
+    image = {
+      enabled = true,
+    },
     -- scroll = {
     --   enabled = false,
     -- },
