@@ -3,6 +3,7 @@ return {
   opts = {
     formatters_by_ft = {
       htmldjango = { "djlint" },
+      rust = { "rustfmt" },
       nginx = { "nginxfmt" },
       astro = { "prettier", "rustywind" },
     },
