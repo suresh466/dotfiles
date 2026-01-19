@@ -115,4 +115,10 @@ fi
 
 # tmux sessionizer bash completion
 source <(COMPLETE=bash tms)
-bind -x '"\C-a": tms'
+bind -x '"\C-af": tms'
+bind -x '"\C-as": tms switch'
+
+# Source tms exec wrapper
+if [ -f ~/.tms_exec ]; then
+  . ~/.tms_exec
+fi

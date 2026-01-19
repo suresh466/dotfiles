@@ -1,0 +1,43 @@
+tms() {
+    # Check if the user is calling the "exec" subcommand
+    if [[ "$1" == "exec" ]]; then
+        shift # remove exec from args list
+
+        if [ -z "$1" ]; then
+            echo "Usage: tms exec <command> [args...]"
+            return 1
+        fi
+
+        local base_name="$1"
+        if [ -n "$2" ]; then
+            base_name="${base_name}_${2}"
+        fi
+
+        # Handle Name Collisions
+        local name="$base_name"
+        local count=1
+        while command tmux has-session -t "$name" 2>/dev/null; do
+            name="${base_name}_${count}"
+            ((count++))
+        done
+
+        # Use printf %q to safely escape the command and its arguments.
+        # "$@" now contains ONLY the command and its args (because of shift).
+        local cmd_str
+        printf -v cmd_str "%q " "$@"
+        #If you are already inside tmux, running tmux new-session (without -d) will fail with an error(nesting)
+        # ; exec $SHELL keeps session alive after command runs
+        command tmux new-session -d -s "$name" "$cmd_str ; exec $SHELL"
+
+        # Switch or Attach
+        if [ -n "$TMUX" ]; then
+            command tmux switch-client -t "$name"
+        else
+            command tmux attach-session -t "$name"
+        fi
+
+    else
+        # If the command is NOT 'exec', call the real 'tms' binary.
+        command tms "$@"
+    fi
+}
