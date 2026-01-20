@@ -3,3 +3,13 @@
 -- Add any additional options here
 
 -- vim.opt.clipboard = ""
+
+---- Add Caddyfile support
+vim.filetype.add({
+  extension = {
+    caddy = "caddy",
+  },
+  filename = {
+    Caddyfile = "caddy",
+  },
+})
