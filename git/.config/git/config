@@ -1,0 +1,21 @@
+[user]
+  email = suresh.thagunna77@gmail.com
+  name = Suresh Thagunna
+[core]
+  whitespace = error
+  pager = delta
+[init]
+  defaultBranch = main
+[status]
+  branch = true
+  showStash = true
+[diff]
+  colorMoved = default
+[delta]
+  features = gruvbox-dark
+  navigate = true  # use n and N to move between diff sections
+  line-numbers = true
+[interactive]
+  diffFilter = delta --color-only
+[merge]
+  conflictStyle = zdiff3
