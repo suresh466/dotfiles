@@ -2,11 +2,18 @@ return {
   "stevearc/conform.nvim",
   opts = {
     formatters_by_ft = {
+      -- Apply to all filetypes
+      ["*"] = { "trim_whitespace" },
+      -- Apply to any that has no formatter
+      ["_"] = { "trim_newlines" },
       htmldjango = { "djlint" },
       rust = { "rustfmt" },
       nginx = { "nginxfmt" },
       astro = { "prettier", "rustywind" },
       caddy = { "caddyfmt" },
+      javascriptreact = { "rustywind" },
+      typescriptreact = { "rustywind" },
+      css = { "prettier" },
     },
     formatters = {
       djlint = {
