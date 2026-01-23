@@ -6,6 +6,7 @@ return {
       ["*"] = { "trim_whitespace" },
       -- Apply to any that has no formatter
       ["_"] = { "trim_newlines" },
+      python = { "ruff_fix", "ruff_organize_imports", "ruff_format" },
       htmldjango = { "djlint" },
       rust = { "rustfmt" },
       nginx = { "nginxfmt" },

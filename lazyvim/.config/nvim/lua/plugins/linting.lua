@@ -3,6 +3,7 @@ return {
   opts = {
     linters_by_ft = {
       -- rust = { "clippy" },
+      python = { "mypy" },
     },
   },
 }

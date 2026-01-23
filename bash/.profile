@@ -11,6 +11,7 @@ fi
 # --- 2. Environment Variables ---
 # Define session-wide variables here.
 
+export BAT_THEME="gruvbox-dark"
 # Default Editors
 export VISUAL=nvim
 export EDITOR="$VISUAL"
