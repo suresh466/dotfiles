@@ -11,6 +11,7 @@
   showStash = true
 [diff]
   colorMoved = default
+  algorithm = histogram
 [delta]
   features = gruvbox-dark
   navigate = true  # use n and N to move between diff sections

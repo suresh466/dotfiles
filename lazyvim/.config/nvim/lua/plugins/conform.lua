@@ -12,9 +12,10 @@ return {
       nginx = { "nginxfmt" },
       astro = { "prettier", "rustywind" },
       caddy = { "caddyfmt" },
-      javascriptreact = { "rustywind" },
-      typescriptreact = { "rustywind" },
+      javascriptreact = { "rustywind", "prettier" },
+      typescriptreact = { "rustywind", "prettier" },
       css = { "prettier" },
+      json = { "json_repair" },
     },
     formatters = {
       djlint = {
