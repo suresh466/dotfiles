@@ -59,7 +59,7 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 # Pager settings (Man pages & Less)
 export MANPAGER="nvim +Man!"
-export LESS="-R"
+export LESS="-R -i"
 # Compiler Colors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 

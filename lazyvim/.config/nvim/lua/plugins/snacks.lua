@@ -8,7 +8,11 @@ return {
   },
   opts = {
     image = {
-      enabled = true,
+      doc = {
+        inline = false,
+        float = true,
+        max_height = 10,
+      },
     },
     -- scroll = {
     --   enabled = false,
