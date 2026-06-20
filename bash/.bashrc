@@ -7,6 +7,11 @@ case $- in
 *) return ;;
 esac
 
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+  . /etc/bashrc
+fi
+
 # --- History & Shell Options ---
 # Don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
@@ -91,19 +96,16 @@ path_append() {
 
 # Prepend: Higher Priority
 path_prepend "$HOME/.local/bin"
-path_prepend "$HOME/.cargo/bin"
+# path_prepend "$HOME/.cargo/bin"
+. "$HOME/.cargo/env"
 
 # SSH Agent Management (keychain)
-eval $(keychain --eval --quiet)
+# eval $(keychain --eval --quiet)
 
 # Tmux Sessionizer (tms)
 source <(COMPLETE=bash tms)
 bind -x '"\C-af": tms'
 bind -x '"\C-as": tms switch'
-# Source custom tms wrapper function
-if [ -f ~/.tms_exec ]; then
-  . ~/.tms_exec
-fi
 
 # Node.js Manager (n)
 export N_PREFIX="$HOME/.local/n"
